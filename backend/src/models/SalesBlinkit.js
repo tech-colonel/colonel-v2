@@ -1,0 +1,45 @@
+'use strict';
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/database');
+
+const SalesBlinkit = sequelize.define('SalesBlinkit', {
+  id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true },
+  brand_id: { type: DataTypes.UUID, allowNull: false },
+  month: { type: DataTypes.INTEGER },
+  year: { type: DataTypes.INTEGER },
+  filename: { type: DataTypes.STRING },
+  created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+  order_id: { type: DataTypes.STRING },
+  order_date: { type: DataTypes.DATE },
+  item_id: { type: DataTypes.STRING },
+  product_name: { type: DataTypes.STRING },
+  brand_name: { type: DataTypes.STRING },
+  upc: { type: DataTypes.STRING },
+  variant_description: { type: DataTypes.STRING },
+  category_mapping: { type: DataTypes.STRING },
+  business_category: { type: DataTypes.STRING },
+  supply_city: { type: DataTypes.STRING },
+  supply_state: { type: DataTypes.STRING },
+  supply_state_gst: { type: DataTypes.STRING },
+  customer_city: { type: DataTypes.STRING },
+  customer_state: { type: DataTypes.STRING },
+  order_status: { type: DataTypes.STRING },
+  hsn_code: { type: DataTypes.STRING },
+  igst_percent: { type: DataTypes.DECIMAL(10, 4) },
+  cgst_percent: { type: DataTypes.DECIMAL(10, 4) },
+  sgst_percent: { type: DataTypes.DECIMAL(10, 4) },
+  cess_percent: { type: DataTypes.DECIMAL(10, 4) },
+  quantity: { type: DataTypes.INTEGER },
+  mrp: { type: DataTypes.DECIMAL(15, 4) },
+  selling_price: { type: DataTypes.DECIMAL(15, 4) },
+  igst_value: { type: DataTypes.DECIMAL(15, 4) },
+  cgst_value: { type: DataTypes.DECIMAL(15, 4) },
+  sgst_value: { type: DataTypes.DECIMAL(15, 4) },
+  cess_value: { type: DataTypes.DECIMAL(15, 4) },
+  total_tax: { type: DataTypes.DECIMAL(15, 4) },
+  total_gross_bill_amount: { type: DataTypes.DECIMAL(15, 4) },
+  gst_rate: { type: DataTypes.DECIMAL(10, 4) },
+  taxable_value: { type: DataTypes.DECIMAL(15, 4) },
+}, { tableName: 'sales_blinkit', timestamps: true });
+
+module.exports = SalesBlinkit;

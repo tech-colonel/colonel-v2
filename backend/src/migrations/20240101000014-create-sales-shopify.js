@@ -1,0 +1,72 @@
+'use strict';
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('sales_shopify', {
+      id: {
+        type: Sequelize.UUID,
+        primaryKey: true,
+        defaultValue: Sequelize.UUIDV4,
+      },
+      brand_id: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: 'brands',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+      },
+      month: { type: Sequelize.INTEGER },
+      year: { type: Sequelize.INTEGER },
+      filename: { type: Sequelize.STRING },
+      created_at: { type: Sequelize.DATE, defaultValue: Sequelize.NOW },
+      date: { type: Sequelize.DATE },
+      day: { type: Sequelize.DATE },
+      sales: { type: Sequelize.STRING },
+      product_variant_sku: { type: Sequelize.STRING },
+      fg: { type: Sequelize.STRING },
+      product_variant_id: { type: Sequelize.STRING },
+      product_variant_title: { type: Sequelize.STRING },
+      shipping_region: { type: Sequelize.STRING },
+      billing_region: { type: Sequelize.STRING },
+      tally_ledger: { type: Sequelize.STRING },
+      sales_ledger: { type: Sequelize.STRING },
+      invoice_number: { type: Sequelize.STRING },
+      customer_name: { type: Sequelize.STRING },
+      order_fulfillment_status: { type: Sequelize.STRING },
+      product_id: { type: Sequelize.STRING },
+      product_title: { type: Sequelize.STRING },
+      order_id: { type: Sequelize.STRING },
+      billing_city: { type: Sequelize.STRING },
+      shipping_city: { type: Sequelize.STRING },
+      gross_sales: { type: Sequelize.DECIMAL(15, 4) },
+      discounts: { type: Sequelize.DECIMAL(15, 4) },
+      returns: { type: Sequelize.DECIMAL(15, 4) },
+      net_sales: { type: Sequelize.DECIMAL(15, 4) },
+      shipping_charges: { type: Sequelize.DECIMAL(15, 4) },
+      return_fees: { type: Sequelize.DECIMAL(15, 4) },
+      taxes: { type: Sequelize.DECIMAL(15, 4) },
+      total_sales: { type: Sequelize.DECIMAL(15, 4) },
+      quantity_returned: { type: Sequelize.INTEGER },
+      quantity_ordered: { type: Sequelize.INTEGER },
+      quantity_ordered_per_order: { type: Sequelize.INTEGER },
+      final_qty: { type: Sequelize.INTEGER },
+      gst_rate: { type: Sequelize.DECIMAL(10, 4) },
+      taxable_value: { type: Sequelize.DECIMAL(15, 4) },
+      igst: { type: Sequelize.DECIMAL(15, 4) },
+      cgst: { type: Sequelize.DECIMAL(15, 4) },
+      sgst: { type: Sequelize.DECIMAL(15, 4) },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+    });
+  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('sales_shopify');
+  },
+};

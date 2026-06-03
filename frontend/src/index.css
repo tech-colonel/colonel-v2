@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F8FAFC;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+code, .mono {
+  font-family: 'JetBrains Mono', 'Monaco', 'Courier New', monospace;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ─── Invoice Processing Status Banner ────────────────────────────────────── */
+@keyframes invoice-banner-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes invoice-pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  70%  { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes invoice-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.invoice-processing-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  animation: invoice-banner-in 0.3s ease both;
+  overflow: hidden;
+}
+
+/* Processing state — amber/blue gradient */
+.invoice-processing-banner--active {
+  background: linear-gradient(135deg, #eff6ff 0%, #fefce8 100%);
+  border-color: #bfdbfe;
+}
+
+/* Done state — green */
+.invoice-processing-banner--done {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-color: #86efac;
+}
+
+/* Icon wrapper */
+.invoice-processing-banner__icon-wrap {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.invoice-processing-banner__icon-wrap--spin {
+  background: #dbeafe;
+  color: #2563eb;
+  position: relative;
+}
+
+.invoice-processing-banner__icon-wrap--done {
+  background: #bbf7d0;
+  color: #16a34a;
+}
+
+.invoice-processing-banner__icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Spinning icon */
+.invoice-processing-banner__icon-wrap--spin .invoice-processing-banner__icon {
+  animation: invoice-spin 1s linear infinite;
+}
+
+/* Pulsing ring behind spinner */
+.invoice-processing-banner__pulse {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #93c5fd;
+  animation: invoice-pulse-ring 1.8s ease-out infinite;
+  pointer-events: none;
+}
+
+/* Text */
+.invoice-processing-banner__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.invoice-processing-banner__title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 2px;
+}
+
+.invoice-processing-banner--active .invoice-processing-banner__title {
+  color: #1d4ed8;
+}
+
+.invoice-processing-banner--done .invoice-processing-banner__title {
+  color: #15803d;
+}
+
+.invoice-processing-banner__sub {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Close button (done state) */
+.invoice-processing-banner__close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.invoice-processing-banner__close:hover {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* ─── Invoice Agent Workspace — Button & Utility Classes ──────────────────── */
+.process-btn {
+  border-radius: 8px;
+}
+
+.cancel-btn {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #DC2626;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: #FEE2E2;
+}
+
+/* Inline spinner inside process button */
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: invoice-spin 0.75s linear infinite;
+  flex-shrink: 0;
+}
+
+/* Post-processing summary banner */
+.summary-banner {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #15803d;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+.corrupted-count {
+  color: #d97706;
+}
+
+/* Corrupted row highlight in invoice list */
+.row-corrupted {
+  background: #fef2f2 !important;
+  border-left: 3px solid #ef4444;
+}
+
+/* animate-in / fade-in utilities (tailwindcss-animate supplement) */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation-name: fade-in;
+}
+
+.duration-200 {
+  animation-duration: 200ms;
+}
+
+.duration-500 {
+  animation-duration: 500ms;
+}

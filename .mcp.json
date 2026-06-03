@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "jetro": {
+      "type": "stdio",
+      "command": "C:\\Users\\admin\\.jetro\\runtime\\node-win32-x64.exe",
+      "args": [
+        "C:\\Users\\admin\\.jetro\\mcp-server\\index.js"
+      ],
+      "env": {
+        "JET_WORKSPACE": "f:\\Colonel\\colonel-automation\\colonel-automation",
+        "JET_API_URL": "https://api.jetro.ai",
+        "PATH": "C:\\Users\\admin\\.jetro\\runtime;C:\\Program Files\\MinGW\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Java\\jdk-21\\bin;C:\\Program Files\\MongoDB\\Server\\8.0\\bin;C:\\Users\\admin\\AppData\\Local\\nvm;C:\\nvm4w\\nodejs;C:\\Program Files\\cursor\\resources\\app\\bin;C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\admin\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\admin\\AppData\\Roaming\\npm;C:\\Users\\admin\\AppData\\Local\\nvm;C:\\nvm4w\\nodejs;C:\\Users\\admin\\AppData\\Local\\Python\\bin;C:\\Users\\admin\\AppData\\Local\\Programs\\Antigravity\\bin;C:\\Users\\admin\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+      }
+    }
+  }
+}
