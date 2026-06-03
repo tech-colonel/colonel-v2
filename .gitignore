@@ -17,9 +17,7 @@ logs
 .cursor/
 .jetro/
 .windsurfrules/
-AGENT.md
-CLAUDE.md
-claude-plan.md
+
 
 # Dependencies
 node_modules/
